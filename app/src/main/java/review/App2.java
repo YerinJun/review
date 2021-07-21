@@ -1,18 +1,49 @@
 package review;
 
+import java.sql.Date;
+import java.util.Scanner;
+
 public class App2 {
   public static void main(String[] args) {
+
+    Scanner keyboard = new Scanner(System.in);
+
     System.out.printf("%s\n", "[프로젝트]");
-    System.out.print("번호: ");
-    System.out.println(1201);
 
-    System.out.println("프로젝트명:" + "미니 프로젝트 관리 시스템 개발");
-    System.out.printf("%s: %s\n", "내용", "소규모 팀을 위한 프로젝트 관리 시스템을 개발한다.");
-    System.out.println("시작일: " + "2020-01-01");
-    System.out.println("종료일: " + "2020-12-31");
-    System.out.println("만든이: 홍길동");
+    System.out.print("번호? ");
+    int no = keyboard.nextInt();
+    keyboard.nextLine();
 
-    System.out.print("팀원: ");
-    System.out.print("홍길동," + "김구," + "유관순," + "안중근," + "윤봉길");
+    System.out.print("프로젝트명?");
+    String title = keyboard.nextLine();
+
+    System.out.print("내용?");
+    String content = keyboard.nextLine();
+
+    System.out.print("시작일?");
+    Date startDate = Date.valueOf(keyboard.nextLine());
+
+    System.out.print("종료일? ");
+    Date endDate = Date.valueOf(keyboard.nextLine());
+
+    System.out.print("만든이?");
+    String maker = keyboard.nextLine();
+
+    System.out.print("팀원? ");
+    String member = keyboard.nextLine();
+
+    Date today = new Date(System.currentTimeMillis());
+    keyboard.close();
+
+    System.out.println("--------------------");
+    System.out.println("번호: " + no);
+    System.out.println("프로젝트명: " + title);
+    System.out.println("내용: " + content);
+    System.out.println("시작일: " + startDate);
+    System.out.println("종료일: " + endDate);
+    System.out.println("만든이: " + maker);
+    System.out.println("팀원: "+ member);
+    System.out.println("오늘 날짜: " + today);
+
   }
 }
