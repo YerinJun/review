@@ -17,8 +17,8 @@ public class App {
 
     Scanner keyboard = new Scanner(System.in);
 
-    int i = 0;
-    while (i < 5) {
+
+    for (int i = 0; i < 5; i++) {
       System.out.print("번호? ");
       no[i] = Integer.parseInt(keyboard.nextLine());
       System.out.print("이름? ");
@@ -33,16 +33,13 @@ public class App {
       tel[i] = keyboard.nextLine();
       registeredDate[i] = new Date();
       System.out.println();
-      i += 1;
     }
     keyboard.close();
 
     System.out.println("--------------------------------------------");
 
-    i = 0;
-    while (i < 5) {
+    for (int i = 0;i < 5; i++) {
       System.out.printf("%s, %s, %s, %s, %s\n", no[i], name[i], email[i], tel[i], registeredDate[i]);
-      i += 1;
     }
   }
 }
