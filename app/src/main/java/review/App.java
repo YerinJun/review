@@ -7,13 +7,15 @@ public class App {
   public static void main(String[] args) {
     System.out.println("[회원]");
 
-    int[] no = new int[5];
-    String[] name = new String[5];
-    String[] email = new String[5];
-    String[] pw = new String[5];
-    String[] photo = new String[5];
-    String[] tel = new String[5];
-    Date[] registeredDate = new Date[5];
+    final int MAX_LENGTH = 5;
+
+    int[] no = new int[MAX_LENGTH];
+    String[] name = new String[MAX_LENGTH];
+    String[] email = new String[MAX_LENGTH];
+    String[] pw = new String[MAX_LENGTH];
+    String[] photo = new String[MAX_LENGTH];
+    String[] tel = new String[MAX_LENGTH];
+    Date[] registeredDate = new Date[MAX_LENGTH];
 
     Scanner keyboard = new Scanner(System.in);
 
