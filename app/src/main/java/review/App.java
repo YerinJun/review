@@ -7,101 +7,101 @@ public class App {
   public static void main(String[] args) {
     System.out.println("[회원]");
 
-    int no1, no2, no3, no4, no5;
-    String name1, name2, name3, name4, name5;
-    String email1, email2, email3, email4, email5;
-    String pw1, pw2, pw3, pw4, pw5;
-    String photo1, photo2, photo3, photo4, photo5;
-    String tel1, tel2 ,tel3, tel4, tel5;
-    Date registeredDate1, registeredDate2, registeredDate3, registeredDate4, registeredDate5;
+    int[] no = new int[5];
+    String[] name = new String[5];
+    String[] email = new String[5];
+    String[] pw = new String[5];
+    String[] photo = new String[5];
+    String[] tel = new String[5];
+    Date[] registeredDate = new Date[5];
 
     Scanner keyboard = new Scanner(System.in);
 
     System.out.print("번호? ");
-    no1 = Integer.parseInt(keyboard.nextLine());
+    no[0] = Integer.parseInt(keyboard.nextLine());
     System.out.print("이름? ");
-    name1 = keyboard.nextLine();
+    name[0] = keyboard.nextLine();
     System.out.print("이메일? ");
-    email1 = keyboard.nextLine();
+    email[0] = keyboard.nextLine();
     System.out.print("암호? ");
-    pw1 = keyboard.nextLine();
+    pw[0] = keyboard.nextLine();
     System.out.print("사진? ");
-    photo1 = keyboard.nextLine();
+    photo[0] = keyboard.nextLine();
     System.out.print("전화? ");
-    tel1 = keyboard.nextLine();
-    registeredDate1 = new Date();
+    tel[0] = keyboard.nextLine();
+    registeredDate[0] = new Date();
     System.out.println();
 
     System.out.print("번호? ");
-    no2 = Integer.parseInt(keyboard.nextLine());
+    no[1] = Integer.parseInt(keyboard.nextLine());
     System.out.print("이름? ");
-    name2 = keyboard.nextLine();
+    name[1] = keyboard.nextLine();
     System.out.print("이메일? ");
-    email2 = keyboard.nextLine();
+    email[1] = keyboard.nextLine();
     System.out.print("암호? ");
-    pw2 = keyboard.nextLine();
+    pw[1] = keyboard.nextLine();
     System.out.print("사진? ");
-    photo2 = keyboard.nextLine();
+    photo[1] = keyboard.nextLine();
     System.out.print("전화? ");
-    tel2 = keyboard.nextLine();
-    registeredDate2 = new Date();
+    tel[1] = keyboard.nextLine();
+    registeredDate[1] = new Date();
     System.out.println();
 
     System.out.print("번호? ");
-    no3 = Integer.parseInt(keyboard.nextLine());
+    no[2] = Integer.parseInt(keyboard.nextLine());
     System.out.print("이름? ");
-    name3 = keyboard.nextLine();
+    name[2] = keyboard.nextLine();
     System.out.print("이메일? ");
-    email3 = keyboard.nextLine();
+    email[2] = keyboard.nextLine();
     System.out.print("암호? ");
-    pw3 = keyboard.nextLine();
+    pw[2] = keyboard.nextLine();
     System.out.print("사진? ");
-    photo3 = keyboard.nextLine();
+    photo[2] = keyboard.nextLine();
     System.out.print("전화? ");
-    tel3 = keyboard.nextLine();
-    registeredDate3 = new Date();
+    tel[2] = keyboard.nextLine();
+    registeredDate[2] = new Date();
     System.out.println();
 
     System.out.print("번호? ");
-    no4 = Integer.parseInt(keyboard.nextLine());
+    no[3] = Integer.parseInt(keyboard.nextLine());
     System.out.print("이름? ");
-    name4 = keyboard.nextLine();
+    name[3] = keyboard.nextLine();
     System.out.print("이메일? ");
-    email4 = keyboard.nextLine();
+    email[3] = keyboard.nextLine();
     System.out.print("암호? ");
-    pw4 = keyboard.nextLine();
+    pw[3] = keyboard.nextLine();
     System.out.print("사진? ");
-    photo4 = keyboard.nextLine();
+    photo[3] = keyboard.nextLine();
     System.out.print("전화? ");
-    tel4 = keyboard.nextLine();
-    registeredDate4 = new Date();
+    tel[3] = keyboard.nextLine();
+    registeredDate[3] = new Date();
     System.out.println();
 
     System.out.print("번호? ");
-    no5 = Integer.parseInt(keyboard.nextLine());
+    no[4] = Integer.parseInt(keyboard.nextLine());
     System.out.print("이름? ");
-    name5 = keyboard.nextLine();
+    name[4] = keyboard.nextLine();
     System.out.print("이메일? ");
-    email5 = keyboard.nextLine();
+    email[4] = keyboard.nextLine();
     System.out.print("암호? ");
-    pw5 = keyboard.nextLine();
+    pw[4] = keyboard.nextLine();
     System.out.print("사진? ");
-    photo5 = keyboard.nextLine();
+    photo[4] = keyboard.nextLine();
     System.out.print("전화? ");
-    tel5 = keyboard.nextLine();
-    registeredDate5 = new Date();
+    tel[4] = keyboard.nextLine();
+    registeredDate[4] = new Date();
     System.out.println();
+
 
     keyboard.close();
 
-    System.out.println("-----------------------");
+    System.out.println("--------------------------------------------");
 
-    System.out.printf("%s, %s, %s, %s, %s\n", no1, name1, email1, tel1, registeredDate1);
-    System.out.printf("%s, %s, %s, %s, %s\n", no2, name2, email2, tel2, registeredDate2);
-    System.out.printf("%s, %s, %s, %s, %s\n", no3, name3, email3, tel3, registeredDate3);
-    System.out.printf("%s, %s, %s, %s, %s\n", no4, name4, email4, tel4, registeredDate4);
-    System.out.printf("%s, %s, %s, %s, %s\n", no5, name5, email5, tel5, registeredDate5);
-
+    System.out.printf("%s, %s, %s, %s, %s\n", no[0], name[0], email[0], tel[0], registeredDate[0]);
+    System.out.printf("%s, %s, %s, %s, %s\n", no[1], name[1], email[1], tel[1], registeredDate[1]);
+    System.out.printf("%s, %s, %s, %s, %s\n", no[2], name[2], email[2], tel[2], registeredDate[2]);
+    System.out.printf("%s, %s, %s, %s, %s\n", no[3], name[3], email[3], tel[3], registeredDate[3]);
+    System.out.printf("%s, %s, %s, %s, %s\n", no[4], name[4], email[4], tel[4], registeredDate[4]);
 
   }
 }
