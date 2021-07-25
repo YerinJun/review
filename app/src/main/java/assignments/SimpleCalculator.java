@@ -6,11 +6,11 @@ public class SimpleCalculator {
   public static void main(String[] args) {
     Scanner keyboard = new Scanner(System.in);
 
-    System.out.print("Enter fist value. ");
+    System.out.print("Enter first value. ");
     int v1 = Integer.parseInt(keyboard.nextLine());
     System.out.print("Enter second value. ");
     int v2 = Integer.parseInt(keyboard.nextLine());
-    System.out.print("Enter operator. ( +, -, *, / ) ");
+    System.out.print("Enter operator. [ + - * / ] ");
     String operator = keyboard.nextLine();
     keyboard.close();
 
@@ -24,7 +24,7 @@ public class SimpleCalculator {
     } else if (operator.equals("/")) {
       result = v1 / v2;
     } else {
-      System.out.println("Please, choose one of +, -, *, / operators.");
+      System.out.println("Enter one of the following : + - * / ");
       return;
     }
 
