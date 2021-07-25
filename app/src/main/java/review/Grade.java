@@ -28,16 +28,18 @@ public class Grade {
       avg[i] = sum[i]/3;
       size += 1;
 
-      System.out.println("계속 입력하시겠습니까? (y/N)");
+      System.out.print("계속 입력하시겠습니까? (y/N)");
       String input = keyboard.nextLine();
       if (input.equalsIgnoreCase("n") || input.length() == 0) {
+        System.out.println("입력을 종료합니다.");
         break;
       }
     }
     keyboard.close();
 
+    System.out.println("-----------------------------------------");
     for (int i = 0; i < size; i++) {
-      System.out.printf("%s %d %d %d %d %.1f\n1",
+      System.out.printf("%s %d %d %d %d %.1f\n",
           name[i], kr[i], eng[i], math[i], sum[i], avg[i]);
     }
   }
