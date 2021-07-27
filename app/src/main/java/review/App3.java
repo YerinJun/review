@@ -9,47 +9,53 @@ public class App3 {
 
     Scanner keyboard = new Scanner(System.in);
 
-    System.out.print("프로젝트?");
-    String project = keyboard.nextLine();
+    final int MAX_LENGTH = 10;
+    int[] no = new int[MAX_LENGTH];
+    String[] content = new String[MAX_LENGTH];
+    Date[] deadline = new Date[MAX_LENGTH];
+    int[] status = new int[MAX_LENGTH];
+    String[] owner = new String[MAX_LENGTH];
 
-    System.out.print("번호?");
-    int no = Integer.parseInt(keyboard.nextLine());
+    int size = 0;
+    for (int i = 0; i < MAX_LENGTH; i++) {
+      System.out.print("번호? ");
+      no[i] = Integer.parseInt(keyboard.nextLine());
+      System.out.print("내용? ");
+      content[i] = keyboard.nextLine();
+      System.out.print("마감일? ");
+      deadline[i] = Date.valueOf(keyboard.nextLine());
+      System.out.println("상태? ");
+      System.out.println("0: 신규");
+      System.out.println("1: 진행중");
+      System.out.println("2: 완료");
+      System.out.print("> ");
+      status[i] = Integer.parseInt(keyboard.nextLine());
+      System.out.print("담당자? ");
+      owner[i] = keyboard.nextLine();
 
-    System.out.print("내용?");
-    String content = keyboard.nextLine();
-
-    System.out.print("완료일?");
-    Date deadline = Date.valueOf(keyboard.nextLine());
-
-    System.out.println("상태?");
-    System.out.println("0: 신규");
-    System.out.println("1: 진행중");
-    System.out.println("2: 완료");
-    System.out.print("> ");
-    int status = Integer.parseInt(keyboard.nextLine());
-
-    System.out.print("담당자?");
-    String owner = keyboard.nextLine();
-
+      size++;
+      System.out.print("계속 입력하시겠습니까? (y/N) ");
+      String input = keyboard.nextLine();
+      if (input.equalsIgnoreCase("n") || input.length() == 0)
+        break;
+    }
     keyboard.close();
 
     System.out.println("-----------------------");
 
-    System.out.println("프로젝트: " + project);
-    System.out.println("번호: " + no);
-    System.out.println("내용: " + content);
-    System.out.println("완료일: " + deadline);
-
-    switch (status) {
-      case 1:
-        System.out.println("상태: 진행중");
-        break;
-      case 2:
-        System.out.println("상태: 완료");
-        break;
-      default:
-        System.out.println("상태: 신규");
+    for (int i = 0; i < size; i++) {
+      System.out.printf("%d, %s, ", no[i], deadline[i]);
+      switch (status[i]) {
+        case 1:
+          System.out.print("진행중, ");
+          break;
+        case 2:
+          System.out.print("완료, ");
+          break;
+        default:
+          System.out.print("신규, ");
+      }
+      System.out.println(owner[i]);
     }
-    System.out.println("담당자: " + owner);
   }
 }

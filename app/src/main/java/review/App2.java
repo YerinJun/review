@@ -5,45 +5,48 @@ import java.util.Scanner;
 
 public class App2 {
   public static void main(String[] args) {
-
     Scanner keyboard = new Scanner(System.in);
 
-    System.out.printf("%s\n", "[프로젝트]");
+    final int MAX_LENGTH = 10;
 
-    System.out.print("번호? ");
-    int no = keyboard.nextInt();
-    keyboard.nextLine();
+    int[] no = new int[MAX_LENGTH];
+    String[] title = new String[MAX_LENGTH];
+    String[] content = new String[MAX_LENGTH];
+    Date[] startDate = new Date[MAX_LENGTH];
+    Date[] endDate = new Date[MAX_LENGTH];
+    String[] owner = new String[MAX_LENGTH];
+    String[] member = new String[MAX_LENGTH];
 
-    System.out.print("프로젝트명?");
-    String title = keyboard.nextLine();
+    int size = 0;
+    System.out.println("[프로젝트]");
+    for (int i = 0; i < MAX_LENGTH; i++) {
+      System.out.print("번호 ? ");
+      no[i] = Integer.parseInt(keyboard.nextLine());
+      System.out.print("프로젝트명 ? ");
+      title[i] = keyboard.nextLine();
+      System.out.print("내용 ? ");
+      content[i] = keyboard.nextLine();
+      System.out.print("시작일 ? ");
+      startDate[i] = Date.valueOf(keyboard.nextLine());
+      System.out.print("종료일 ? ");
+      endDate[i] = Date.valueOf(keyboard.nextLine());
+      System.out.print("만든이 ? ");
+      owner[i] = keyboard.nextLine();
+      System.out.print("팀원 ? ");
+      member[i] = keyboard.nextLine();
 
-    System.out.print("내용?");
-    String content = keyboard.nextLine();
+      size++;
+      System.out.print("계속 입력하시겠습니까? (y/N)");
+      String input = keyboard.nextLine();
+      if (input.equalsIgnoreCase("n") || input.length() == 0)
+        break;
+    }
 
-    System.out.print("시작일?");
-    Date startDate = Date.valueOf(keyboard.nextLine());
-
-    System.out.print("종료일? ");
-    Date endDate = Date.valueOf(keyboard.nextLine());
-
-    System.out.print("만든이?");
-    String maker = keyboard.nextLine();
-
-    System.out.print("팀원? ");
-    String member = keyboard.nextLine();
-
-    Date today = new Date(System.currentTimeMillis());
     keyboard.close();
+    System.out.println("-----------------------------------------");
 
-    System.out.println("--------------------");
-    System.out.println("번호: " + no);
-    System.out.println("프로젝트명: " + title);
-    System.out.println("내용: " + content);
-    System.out.println("시작일: " + startDate);
-    System.out.println("종료일: " + endDate);
-    System.out.println("만든이: " + maker);
-    System.out.println("팀원: "+ member);
-    System.out.println("오늘 날짜: " + today);
-
+    for (int i = 0; i < size; i++) {
+      System.out.printf("%d, %s, %s, %s, %s\n", no[i], title[i], startDate[i], endDate[i], owner[i]);
+    }
   }
 }
