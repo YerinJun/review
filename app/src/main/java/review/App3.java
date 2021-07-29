@@ -44,18 +44,18 @@ public class App3 {
     System.out.println("-----------------------");
 
     for (int i = 0; i < size; i++) {
-      System.out.printf("%d, %s, ", no[i], deadline[i]);
+      String stateLabel = null;
       switch (status[i]) {
         case 1:
-          System.out.print("진행중, ");
+          stateLabel = "진행중";
           break;
         case 2:
-          System.out.print("완료, ");
+          stateLabel = "완료";
           break;
         default:
-          System.out.print("신규, ");
+          stateLabel = "신규";
       }
-      System.out.println(owner[i]);
+      System.out.printf("%d, %s, %s, %s\n", no[i], deadline[i], stateLabel, owner[i]);
     }
   }
 }
