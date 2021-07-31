@@ -1,5 +1,7 @@
 package review.pms;
 
+import review.pms.handler.BoardHandler;
+import review.pms.handler.BoardHandler2;
 import review.pms.handler.MemberHandler;
 import review.pms.handler.ProjectHandler;
 import review.pms.handler.TaskHandler;
@@ -30,6 +32,18 @@ public class App {
 
       } else if (input.equals("/task/list")) {
         TaskHandler.list();
+
+      } else if (input.equals("/board/add")) {
+        BoardHandler.add();
+
+      } else if (input.equals("/board/list")) {
+        BoardHandler.list();
+
+      } else if (input.equals("/board2/add")) {
+        BoardHandler2.add();
+
+      } else if (input.equals("/board2/list")) {
+        BoardHandler2.list();
 
       } else {
         System.out.println("유효하지 않은 명령입니다.");
