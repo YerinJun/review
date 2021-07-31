@@ -9,5 +9,5 @@ public class Project {
   public Date startDate;
   public Date endDate;
   public String owner;
-  public String member;
+  public String members;
 }

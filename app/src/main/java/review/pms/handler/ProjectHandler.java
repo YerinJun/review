@@ -18,8 +18,35 @@ public class ProjectHandler {
     project.content = Prompt.inputString("내용 ? ");
     project.startDate = Prompt.inputDate("시작일 ? ");
     project.endDate = Prompt.inputDate("종료일 ? ");
-    project.owner = Prompt.inputString("만든이 ? ");
-    project.member = Prompt.inputString("팀원 ? ");
+
+    while (true) {
+      String owner = Prompt.inputString("만든이?(취소: 빈 문자열) ");
+      if (MemberHandler.exist(owner)) {
+        project.owner = owner;
+        break;
+      } else if (owner.length() == 0) {
+        System.out.println("프로젝트 등록을 취소합니다.");
+        return;
+      }
+      System.out.println("등록된 회원이 아닙니다.");
+    }
+
+    String members = "";
+    while(true) {
+      String member = Prompt.inputString("팀원?(완료: 빈 문자열) ");
+      if (MemberHandler.exist(member)) {
+        if(members.length() > 0) {
+          members += ",";
+        }
+        members += member;
+        continue;
+      } else if (member.length() == 0) {
+        break;
+      } 
+      System.out.println("등록된 회원이 아닙니다.");
+    }
+    project.members = members;
+
     projects[size++] = project;
   }
 
@@ -27,12 +54,13 @@ public class ProjectHandler {
     System.out.println("[프로젝트 목록]");
 
     for (int i = 0; i < size; i++) {
-      System.out.printf("%d, %s, %s, %s, %s\n", 
+      System.out.printf("%d, %s, %s, %s, %s, [%s]\n", 
           projects[i].no,
           projects[i].title,
           projects[i].startDate,
           projects[i].endDate,
-          projects[i].owner);
+          projects[i].owner,
+          projects[i].members);
     }
   }
 }
