@@ -3,34 +3,35 @@ package review;
 import java.sql.Date;
 
 public class MemberHandler {
+  static final int MAX_LENGTH = 10;
 
-  final static int MAX_LENGTH = 10;
-  static int[] no = new int[MAX_LENGTH];
-  static String[] name = new String[MAX_LENGTH];
-  static String[] email = new String[MAX_LENGTH];
-  static String[] pw = new String[MAX_LENGTH];
-  static String[] photo = new String[MAX_LENGTH];
-  static String[] tel = new String[MAX_LENGTH];
-  static Date[] registeredDate = new Date[MAX_LENGTH];
+  static Member[] members = new Member[MAX_LENGTH];
   static int size = 0;
 
   static void add() {
+    Member member = new Member();
+
     System.out.println("[회원 등록]");
-    no[size] = Prompt.inputInt("번호? ");
-    name[size] = Prompt.inputString("이름? ");
-    email[size] =  Prompt.inputString("이메일? ");
-    pw[size] = Prompt.inputString("암호? ");
-    photo[size] = Prompt.inputString("사진? ");
-    tel[size] = Prompt.inputString("전화? ");
-    registeredDate[size] = new Date(System.currentTimeMillis());
-    size++;
+    member.no = Prompt.inputInt("번호? ");
+    member.name = Prompt.inputString("이름? ");
+    member.email =  Prompt.inputString("이메일? ");
+    member.pw = Prompt.inputString("암호? ");
+    member.photo = Prompt.inputString("사진? ");
+    member.tel = Prompt.inputString("전화? ");
+    member.registeredDate = new Date(System.currentTimeMillis());
+
+    members[size++] = member;
   }
 
   static void list() {
     System.out.println("[회원 목록]");
     for (int i = 0; i < size; i++) {
       System.out.printf("%d, %s, %s, %s, %tY-%5$tm-%5$td\n",
-          no[i], name[i], email[i], tel[i], registeredDate[i]);
+          members[i].no,
+          members[i].name,
+          members[i].email,
+          members[i].tel,
+          members[i].registeredDate);
     }
   }
 }
