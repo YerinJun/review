@@ -4,6 +4,7 @@
 package review;
 
 import org.junit.Test;
+import review.pms.App;
 import static org.junit.Assert.*;
 
 public class AppTest {

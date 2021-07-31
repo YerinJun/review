@@ -1,6 +1,8 @@
-package review;
+package review.pms.handler;
 
 import java.sql.Date;
+import review.pms.domain.Member;
+import review.util.Prompt;
 
 public class MemberHandler {
   static final int MAX_LENGTH = 10;
@@ -8,7 +10,7 @@ public class MemberHandler {
   static Member[] members = new Member[MAX_LENGTH];
   static int size = 0;
 
-  static void add() {
+  public static void add() {
     Member member = new Member();
 
     System.out.println("[회원 등록]");
@@ -23,7 +25,7 @@ public class MemberHandler {
     members[size++] = member;
   }
 
-  static void list() {
+  public static void list() {
     System.out.println("[회원 목록]");
     for (int i = 0; i < size; i++) {
       System.out.printf("%d, %s, %s, %s, %tY-%5$tm-%5$td\n",

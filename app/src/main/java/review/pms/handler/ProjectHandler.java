@@ -1,4 +1,7 @@
-package review;
+package review.pms.handler;
+
+import review.pms.domain.Project;
+import review.util.Prompt;
 
 public class ProjectHandler {
 
@@ -6,7 +9,7 @@ public class ProjectHandler {
   static Project[] projects = new Project[MAX_LENGTH];
   static int size = 0;
 
-  static void add() {
+  public static void add() {
     System.out.println("[프로젝트 등록]");
     Project project = new Project();
 
@@ -20,7 +23,7 @@ public class ProjectHandler {
     projects[size++] = project;
   }
 
-  static void list() {
+  public static void list() {
     System.out.println("[프로젝트 목록]");
 
     for (int i = 0; i < size; i++) {
