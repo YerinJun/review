@@ -1,7 +1,6 @@
 package review.pms;
 
 import review.pms.handler.BoardHandler;
-import review.pms.handler.BoardHandler2;
 import review.pms.handler.MemberHandler;
 import review.pms.handler.ProjectHandler;
 import review.pms.handler.TaskHandler;
@@ -9,6 +8,12 @@ import review.util.Prompt;
 
 public class App {
   public static void main(String[] args) {
+
+    BoardHandler boardHandler = new BoardHandler();
+    MemberHandler memberHandler = new MemberHandler();
+    ProjectHandler projectHandler = new ProjectHandler();
+    TaskHandler taskHandler = new TaskHandler();
+
     while (true) {
       String input = Prompt.inputString("명령> ");
 
@@ -16,34 +21,28 @@ public class App {
         System.out.println("Bye!");
         break;
       } else if (input.equals("/member/add")) {
-        MemberHandler.add();
+        memberHandler.add();
 
       } else if (input.equals("/member/list")) {
-        MemberHandler.list();
+        memberHandler.list();
 
       } else if (input.equals("/project/add")) {
-        ProjectHandler.add();
+        projectHandler.add(memberHandler);
 
       } else if (input.equals("/project/list")) {
-        ProjectHandler.list();
+        projectHandler.list();
 
       } else if (input.equals("/task/add")) {
-        TaskHandler.add();
+        taskHandler.add(memberHandler);
 
       } else if (input.equals("/task/list")) {
-        TaskHandler.list();
+        taskHandler.list();
 
       } else if (input.equals("/board/add")) {
-        BoardHandler.add();
+        boardHandler.add();
 
       } else if (input.equals("/board/list")) {
-        BoardHandler.list();
-
-      } else if (input.equals("/board2/add")) {
-        BoardHandler2.add();
-
-      } else if (input.equals("/board2/list")) {
-        BoardHandler2.list();
+        boardHandler.list();
 
       } else {
         System.out.println("유효하지 않은 명령입니다.");

@@ -5,11 +5,11 @@ import review.util.Prompt;
 
 public class ProjectHandler {
 
-  final static int MAX_LENGTH = 10;
-  static Project[] projects = new Project[MAX_LENGTH];
-  static int size = 0;
+  final static int MAX_LENGTH = 5;
+  Project[] projects = new Project[MAX_LENGTH];
+  int size = 0;
 
-  public static void add() {
+  public void add(MemberHandler memberHandler) {
     System.out.println("[프로젝트 등록]");
     Project project = new Project();
 
@@ -21,7 +21,7 @@ public class ProjectHandler {
 
     while (true) {
       String owner = Prompt.inputString("만든이?(취소: 빈 문자열) ");
-      if (MemberHandler.exist(owner)) {
+      if (memberHandler.exist(owner)) {
         project.owner = owner;
         break;
       } else if (owner.length() == 0) {
@@ -34,7 +34,7 @@ public class ProjectHandler {
     String members = "";
     while(true) {
       String member = Prompt.inputString("팀원?(완료: 빈 문자열) ");
-      if (MemberHandler.exist(member)) {
+      if (memberHandler.exist(member)) {
         if(members.length() > 0) {
           members += ",";
         }
@@ -50,17 +50,17 @@ public class ProjectHandler {
     projects[size++] = project;
   }
 
-  public static void list() {
+  public void list() {
     System.out.println("[프로젝트 목록]");
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < this.size; i++) {
       System.out.printf("%d, %s, %s, %s, %s, [%s]\n", 
-          projects[i].no,
-          projects[i].title,
-          projects[i].startDate,
-          projects[i].endDate,
-          projects[i].owner,
-          projects[i].members);
+          this.projects[i].no,
+          this.projects[i].title,
+          this.projects[i].startDate,
+          this.projects[i].endDate,
+          this.projects[i].owner,
+          this.projects[i].members);
     }
   }
 }

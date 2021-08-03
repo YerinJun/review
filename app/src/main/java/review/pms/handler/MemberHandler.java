@@ -5,12 +5,12 @@ import review.pms.domain.Member;
 import review.util.Prompt;
 
 public class MemberHandler {
-  static final int MAX_LENGTH = 10;
+  static final int MAX_LENGTH = 5;
 
-  static Member[] members = new Member[MAX_LENGTH];
-  static int size = 0;
+  Member[] members = new Member[MAX_LENGTH];
+  int size = 0;
 
-  public static void add() {
+  public void add() {
     Member member = new Member();
 
     System.out.println("[회원 등록]");
@@ -22,24 +22,24 @@ public class MemberHandler {
     member.tel = Prompt.inputString("전화? ");
     member.registeredDate = new Date(System.currentTimeMillis());
 
-    members[size++] = member;
+    this.members[this.size++] = member;
   }
 
-  public static void list() {
+  public void list() {
     System.out.println("[회원 목록]");
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < this.size; i++) {
       System.out.printf("%d, %s, %s, %s, %tY-%5$tm-%5$td\n",
-          members[i].no,
-          members[i].name,
-          members[i].email,
-          members[i].tel,
-          members[i].registeredDate);
+          this.members[i].no,
+          this.members[i].name,
+          this.members[i].email,
+          this.members[i].tel,
+          this.members[i].registeredDate);
     }
   }
 
-  static boolean exist(String name) {
-    for (int i = 0; i < size; i++) {
-      if (members[i].name.equals(name)) {
+  boolean exist(String name) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].name.equals(name)) {
         return true;
       }
     }

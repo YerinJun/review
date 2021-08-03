@@ -6,10 +6,10 @@ import review.util.Prompt;
 public class TaskHandler {
 
   final static int MAX_LENGTH = 10;
-  static Task[] tasks = new Task[MAX_LENGTH];
-  static int size = 0;
+  Task[] tasks = new Task[MAX_LENGTH];
+  int size = 0;
 
-  public static void add() {
+  public void add(MemberHandler memberHandler) {
     System.out.println("[작업 등록]");
     Task task = new Task();
 
@@ -27,19 +27,19 @@ public class TaskHandler {
       if (owner.length() == 0) {
         System.out.println("작업 등록을 취소합니다.");
         return;
-      } else if (MemberHandler.exist(owner)) {
+      } else if (memberHandler.exist(owner)) {
         task.owner = owner;
         break;
       }
       System.out.println("등록된 회원이 아닙니다.");
     }
-    tasks[size++] = task;
+    this.tasks[this.size++] = task;
   }
 
-  public static void list() {
+  public void list() {
     System.out.println("[작업 목록]");
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < this.size; i++) {
       String stateLabel = null;
       switch (tasks[i].status) {
         case 1:
@@ -52,7 +52,11 @@ public class TaskHandler {
           stateLabel = "신규";
       }
       System.out.printf("%d, %s, %s, %s, %s\n", 
-          tasks[i].no, tasks[i].content, tasks[i].deadline, stateLabel, tasks[i].owner);
+          this.tasks[i].no,
+          this.tasks[i].content, 
+          this.tasks[i].deadline, 
+          stateLabel, 
+          this.tasks[i].owner);
     }
   }
 
