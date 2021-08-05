@@ -9,8 +9,9 @@ public class TaskHandler {
   final static int MAX_LENGTH = 10;
   Task[] tasks = new Task[MAX_LENGTH];
   int size = 0;
+  public MemberHandler memberHandler;
 
-  public void add(MemberHandler memberHandler) {
+  public void add() {
     System.out.println("[작업 등록]");
     Task task = new Task();
 
@@ -18,11 +19,13 @@ public class TaskHandler {
     task.content = Prompt.inputString("내용? ");
     task.deadline = Prompt.inputDate("마감일? ");
     task.status = promptStatus();
-    task.owner = promptOwner(memberHandler, "담당자?(취소: 빈 문자열) ");
+    task.owner = promptOwner("담당자?(취소: 빈 문자열) ");
     if (task.owner == null) {
       System.out.println("작업 등록을 취소합니다.");
       return;
     }    
+
+    this.tasks[this.size++] = task;
   }
 
   public void list() {
@@ -67,7 +70,7 @@ public class TaskHandler {
     System.out.printf("담당자: %s\n", task.owner);
   }
 
-  public void update(MemberHandler memberHandler) {
+  public void update() {
     System.out.println("[작업 변경]");
     int no = Prompt.inputInt("번호? ");
 
@@ -80,7 +83,7 @@ public class TaskHandler {
     String content = Prompt.inputString(String.format("내용(%s)?", task.content));
     Date deadline = Prompt.inputDate(String.format("마감일(%s)?", task.deadline));
     int status = promptStatus(task.status);
-    String owner = promptOwner(memberHandler, String.format("만든이(%s)? (취소: 빈 문자열)", task.owner));
+    String owner = promptOwner(String.format("만든이(%s)? (취소: 빈 문자열)", task.owner));
     if (owner == null) {
       System.out.println("작업 변경을 취소합니다.");
       return;
@@ -146,10 +149,10 @@ public class TaskHandler {
     }
   }
 
-  private String promptOwner(MemberHandler memberHandler, String label) {
+  private String promptOwner(String label) {
     while (true) {
       String owner = Prompt.inputString(label);
-      if (memberHandler.exist(owner)) {
+      if (this.memberHandler.exist(owner)) {
         return owner;
       } else if (owner.length() == 0) {
         return null;
