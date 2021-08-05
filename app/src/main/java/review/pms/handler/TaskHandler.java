@@ -9,7 +9,11 @@ public class TaskHandler {
   final static int MAX_LENGTH = 10;
   Task[] tasks = new Task[MAX_LENGTH];
   int size = 0;
-  public MemberHandler memberHandler;
+  MemberHandler memberHandler;
+
+  public TaskHandler(MemberHandler memberHandler) {
+    this.memberHandler = memberHandler;
+  }
 
   public void add() {
     System.out.println("[작업 등록]");

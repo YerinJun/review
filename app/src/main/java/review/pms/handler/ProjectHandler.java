@@ -7,12 +7,24 @@ import review.util.Prompt;
 public class ProjectHandler {
 
   final static int MAX_LENGTH = 5;
+
   Project[] projects = new Project[MAX_LENGTH];
   int size = 0;
 
-  // ProjectHandler가 지속적으로 사용할 의존 객체는 다음과 같이 인스턴스 필드로 받는다.
-  // 이 인스턴스 변수에 의존 객체의 주소를 넣을 수 있도록 점근모드를 공개로 설정한다.
-  public MemberHandler memberHandler;
+  MemberHandler memberHandler;
+
+  // 생성자 선언
+  //    - 인스턴스를 생성할 때 반드시 호출되어야 하는 메서드다.
+  //    - 생성자는 리턴 타입이 없다.
+  //    - 메서드 이름이 클래스 이름과 같아야 한다.
+  //    - 인스턴스를 사용하기 전에 반드시 값을 설정해야 하는 인스턴스 변수가 있다면,
+  //    생성자의 파라미터로 선언하라!
+  //
+  public ProjectHandler(MemberHandler memberHandler) {
+
+
+    this.memberHandler = memberHandler;  
+  }
 
   public void add() {
     System.out.println("[프로젝트 등록]");
@@ -90,7 +102,7 @@ public class ProjectHandler {
       return;
     }
 
-    String members = promptMembers(project.members);
+    String members = promptMembers(String.format("팀원(%s)?(완료: 빈 문자열) ",project.members));
 
     String input = Prompt.inputString("정말 변경하시겠습니까? (y/N)");
     if (input.equalsIgnoreCase("n") || input.length() == 0) {
@@ -104,6 +116,7 @@ public class ProjectHandler {
     project.endDate = endDate;
     project.owner = owner;
     project.members = members;
+
     System.out.println("프로젝트를 변경하였습니다.");
   }
 
