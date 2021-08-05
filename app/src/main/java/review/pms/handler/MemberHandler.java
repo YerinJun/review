@@ -41,14 +41,7 @@ public class MemberHandler {
     System.out.println("[회원 상세보기]");
     int no = Prompt.inputInt("번호? ");
 
-    Member member = null;
-
-    for (int i = 0; i < this.size; i++) {
-      if (this.members[i].no == no) {
-        member = this.members[i];
-        break;
-      }
-    }
+    Member member = findByNo(no);
 
     if (member == null) {
       System.out.println("해당 번호의 회원이 없습니다.");
@@ -66,14 +59,7 @@ public class MemberHandler {
     System.out.println("[회원 변경]");
     int no = Prompt.inputInt("번호? ");
 
-    Member member = null;
-
-    for (int i = 0; i < this.size; i++) {
-      if (this.members[i].no == no) {
-        member = this.members[i];
-        break;
-      }
-    }
+    Member member = findByNo(no);
 
     if (member == null) {
       System.out.println("해당 번호의 회원이 없습니다.");
@@ -104,14 +90,7 @@ public class MemberHandler {
     System.out.println("[회원 삭제]");
     int no = Prompt.inputInt("번호? ");
 
-    int index = -1;
-
-    for (int i = 0; i < this.size; i++) {
-      if (this.members[i].no == no) {
-        index = i;
-        break;
-      }
-    }
+    int index = indexOf(no);
 
     if (index == -1) {
       System.out.println("해당 번호의 회원이 없습니다.");
@@ -139,6 +118,24 @@ public class MemberHandler {
       }
     }
     return false;
+  }
+
+  private Member findByNo(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].no == no) {
+        return this.members[i];
+      }
+    }
+    return null;
+  }
+
+  private int indexOf(int no) {
+    for (int i = 0; i < this.size; i++) {
+      if (this.members[i].no == no) {
+        return i;
+      }
+    }
+    return -1;
   }
 
 }
